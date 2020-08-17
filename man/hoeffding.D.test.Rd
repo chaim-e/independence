@@ -5,7 +5,7 @@
 \alias{Hoeffding-test}
 \title{Hoeffding's D independence test}
 \usage{
-hoeffding.D.test(xs, ys, na.rm = T, collisions = T, precision = 1e-05)
+hoeffding.D.test(xs, ys, na.rm = TRUE, collisions = TRUE, precision = 1e-05)
 }
 \arguments{
 \item{xs, ys}{Same-length numeric vectors, containing paired samples.}
@@ -89,15 +89,15 @@ Most 64-bit compilers emulate 128-bit arithmetics.
 Otherwise we use the standard 64-bit arithmetics.
 Find the upper limits of your environment using
 \enumerate{
-\item \code{independence:::\link[independence]{max_taustar}()}
-\item \code{independence:::\link[independence]{max_hoeffding}()}}
+\item \code{\link[independence]{max_taustar}()}
+\item \code{\link[independence]{max_hoeffding}()}}
 
 Another limitation is 2^31-1, the maximum size and value of
 an integer vector in a 32-bit build of R.
 This is only relevant for the tau star statistic in 128-bit mode,
 which could otherwise afford about three times that size.
 If your sample size falls in this range, try recompiling the
-function \code{independence:::\link[independence]{calc_taustar}}
+function \code{.\link{calc.taustar}}
 according to the instructions in the cpp source file.
 }
 

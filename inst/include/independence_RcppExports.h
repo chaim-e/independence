@@ -66,17 +66,17 @@ namespace independence {
         return Rcpp::as<double >(rcpp_result_gen);
     }
 
-    inline double calc_taustar(const std::vector<unsigned long>& perm) {
-        typedef SEXP(*Ptr_calc_taustar)(SEXP);
-        static Ptr_calc_taustar p_calc_taustar = NULL;
-        if (p_calc_taustar == NULL) {
-            validateSignature("double(*calc_taustar)(const std::vector<unsigned long>&)");
-            p_calc_taustar = (Ptr_calc_taustar)R_GetCCallable("independence", "_independence_calc_taustar");
+    inline double _calc_taustar(const std::vector<unsigned long>& perm) {
+        typedef SEXP(*Ptr__calc_taustar)(SEXP);
+        static Ptr__calc_taustar p__calc_taustar = NULL;
+        if (p__calc_taustar == NULL) {
+            validateSignature("double(*_calc_taustar)(const std::vector<unsigned long>&)");
+            p__calc_taustar = (Ptr__calc_taustar)R_GetCCallable("independence", "_independence__calc_taustar");
         }
         RObject rcpp_result_gen;
         {
             RNGScope RCPP_rngScope_gen;
-            rcpp_result_gen = p_calc_taustar(Shield<SEXP>(Rcpp::wrap(perm)));
+            rcpp_result_gen = p__calc_taustar(Shield<SEXP>(Rcpp::wrap(perm)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
@@ -87,17 +87,17 @@ namespace independence {
         return Rcpp::as<double >(rcpp_result_gen);
     }
 
-    inline double calc_hoeffding(const std::vector<unsigned long>& perm) {
-        typedef SEXP(*Ptr_calc_hoeffding)(SEXP);
-        static Ptr_calc_hoeffding p_calc_hoeffding = NULL;
-        if (p_calc_hoeffding == NULL) {
-            validateSignature("double(*calc_hoeffding)(const std::vector<unsigned long>&)");
-            p_calc_hoeffding = (Ptr_calc_hoeffding)R_GetCCallable("independence", "_independence_calc_hoeffding");
+    inline double _calc_hoeffding(const std::vector<unsigned long>& perm) {
+        typedef SEXP(*Ptr__calc_hoeffding)(SEXP);
+        static Ptr__calc_hoeffding p__calc_hoeffding = NULL;
+        if (p__calc_hoeffding == NULL) {
+            validateSignature("double(*_calc_hoeffding)(const std::vector<unsigned long>&)");
+            p__calc_hoeffding = (Ptr__calc_hoeffding)R_GetCCallable("independence", "_independence__calc_hoeffding");
         }
         RObject rcpp_result_gen;
         {
             RNGScope RCPP_rngScope_gen;
-            rcpp_result_gen = p_calc_hoeffding(Shield<SEXP>(Rcpp::wrap(perm)));
+            rcpp_result_gen = p__calc_hoeffding(Shield<SEXP>(Rcpp::wrap(perm)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
@@ -108,17 +108,17 @@ namespace independence {
         return Rcpp::as<double >(rcpp_result_gen);
     }
 
-    inline double calc_refined(const std::vector<unsigned long>& perm) {
-        typedef SEXP(*Ptr_calc_refined)(SEXP);
-        static Ptr_calc_refined p_calc_refined = NULL;
-        if (p_calc_refined == NULL) {
-            validateSignature("double(*calc_refined)(const std::vector<unsigned long>&)");
-            p_calc_refined = (Ptr_calc_refined)R_GetCCallable("independence", "_independence_calc_refined");
+    inline double _calc_refined(const std::vector<unsigned long>& perm) {
+        typedef SEXP(*Ptr__calc_refined)(SEXP);
+        static Ptr__calc_refined p__calc_refined = NULL;
+        if (p__calc_refined == NULL) {
+            validateSignature("double(*_calc_refined)(const std::vector<unsigned long>&)");
+            p__calc_refined = (Ptr__calc_refined)R_GetCCallable("independence", "_independence__calc_refined");
         }
         RObject rcpp_result_gen;
         {
             RNGScope RCPP_rngScope_gen;
-            rcpp_result_gen = p_calc_refined(Shield<SEXP>(Rcpp::wrap(perm)));
+            rcpp_result_gen = p__calc_refined(Shield<SEXP>(Rcpp::wrap(perm)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();

@@ -183,9 +183,9 @@ static int _independence_RcppExport_validate(const char* sig) {
     if (signatures.empty()) {
         signatures.insert("double(*max_taustar)()");
         signatures.insert("double(*max_hoeffding)()");
-        signatures.insert("double(*calc_taustar)(const std::vector<unsigned long>&)");
-        signatures.insert("double(*calc_hoeffding)(const std::vector<unsigned long>&)");
-        signatures.insert("double(*calc_refined)(const std::vector<unsigned long>&)");
+        signatures.insert("double(*.calc.taustar)(const std::vector<unsigned long>&)");
+        signatures.insert("double(*.calc.hoeffding)(const std::vector<unsigned long>&)");
+        signatures.insert("double(*.calc.refined)(const std::vector<unsigned long>&)");
     }
     return signatures.find(sig) != signatures.end();
 }
@@ -194,9 +194,9 @@ static int _independence_RcppExport_validate(const char* sig) {
 RcppExport SEXP _independence_RcppExport_registerCCallable() { 
     R_RegisterCCallable("independence", "_independence_max_taustar", (DL_FUNC)_independence_max_taustar_try);
     R_RegisterCCallable("independence", "_independence_max_hoeffding", (DL_FUNC)_independence_max_hoeffding_try);
-    R_RegisterCCallable("independence", "_independence_calc_taustar", (DL_FUNC)_independence_calc_taustar_try);
-    R_RegisterCCallable("independence", "_independence_calc_hoeffding", (DL_FUNC)_independence_calc_hoeffding_try);
-    R_RegisterCCallable("independence", "_independence_calc_refined", (DL_FUNC)_independence_calc_refined_try);
+    R_RegisterCCallable("independence", "_independence_.calc.taustar", (DL_FUNC)_independence_calc_taustar_try);
+    R_RegisterCCallable("independence", "_independence_.calc.hoeffding", (DL_FUNC)_independence_calc_hoeffding_try);
+    R_RegisterCCallable("independence", "_independence_.calc.refined", (DL_FUNC)_independence_calc_refined_try);
     R_RegisterCCallable("independence", "_independence_RcppExport_validate", (DL_FUNC)_independence_RcppExport_validate);
     return R_NilValue;
 }

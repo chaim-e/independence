@@ -71,7 +71,7 @@
 #' ## dependent but not absolutely continuous, fools Hoeffding's D
 #' set.seed(123)
 #' xs = runif(200)
-#' f = function(x,y) {(x>y)*pmin(y,x/2) + (x<y)*pmax(y,(x+1)/2)}
+#' f = function(x,y) ifelse(x>y, pmin(y,x/2), pmax(y,(x+1)/2))
 #' ys = f(xs,runif(200))
 #' hoeffding.D.test(xs,ys)
 #' hoeffding.refined.test(xs,ys)

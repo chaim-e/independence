@@ -4,7 +4,7 @@
 \alias{relative.order}
 \title{The relative order of two vectors}
 \usage{
-relative.order(xs, ys, na.rm = T, collisions = T)
+relative.order(xs, ys, na.rm = TRUE, collisions = TRUE)
 }
 \arguments{
 \item{xs, ys}{Numeric vectors of same length.}

@@ -55,7 +55,7 @@
 #' relative.order(runif(8), runif(8))
 #' ## [1] 5 4 8 1 3 2 7 6
 
-relative.order <- function(xs, ys, na.rm = T, collisions = T)
+relative.order <- function(xs, ys, na.rm = TRUE, collisions = TRUE)
 {
   stopifnot(is.vector(xs), is.vector(ys), is.numeric(xs), is.numeric(ys),
             length(xs) == length(ys), is.logical(na.rm), is.logical(collisions))
@@ -163,15 +163,15 @@ relative.order <- function(xs, ys, na.rm = T, collisions = T)
 #' Otherwise we use the standard 64-bit arithmetics.
 #' Find the upper limits of your environment using
 #' \enumerate{
-#' \item \code{independence:::\link[independence]{max_taustar}()}
-#' \item \code{independence:::\link[independence]{max_hoeffding}()}}
+#' \item \code{\link[independence]{max_taustar}()}
+#' \item \code{\link[independence]{max_hoeffding}()}}
 #'
 #' Another limitation is 2^31-1, the maximum size and value of
 #' an integer vector in a 32-bit build of R.
 #' This is only relevant for the tau star statistic in 128-bit mode,
 #' which could otherwise afford about three times that size.
 #' If your sample size falls in this range, try recompiling the
-#' function \code{independence:::\link[independence]{calc_taustar}}
+#' function \code{.\link{calc.taustar}}
 #' according to the instructions in the cpp source file.
 #'
 #' @export
@@ -200,7 +200,7 @@ relative.order <- function(xs, ys, na.rm = T, collisions = T)
   v[["scaled"]] <- scaled <- Tn*(n-1)*limit_law_coef
 
   if ((precision > 0) && (precision < 1) && requireNamespace("TauStar"))
-    p.value <- TauStar::pHoeffInd(scaled, lower.tail = F, precision)[1]
+    p.value <- TauStar::pHoeffInd(scaled, lower.tail = FALSE, precision)[1]
   else p.value <- NA
   v$p.value <- p.value
 
@@ -258,9 +258,9 @@ relative.order <- function(xs, ys, na.rm = T, collisions = T)
 #' arXiv preprint arXiv:1911.01414 (2019).
 #'
 #' @export
-tau.star.test <- function(xs, ys, na.rm = T, collisions = T, precision = 1e-5)
+tau.star.test <- function(xs, ys, na.rm = TRUE, collisions = TRUE, precision = 1e-5)
 {
-  return(.generic.rank.test(xs, ys, calc_taustar, "T",
+  return(.generic.rank.test(xs, ys, .calc.taustar, "T",
                             "Bergsma-Dassios t* Independence Test",
                             na.rm = na.rm,
                             collisions = collisions,
@@ -319,9 +319,9 @@ tau.star.test <- function(xs, ys, na.rm = T, collisions = T, precision = 1e-5)
 #' 4.4-0. https://CRAN.R-project.org/package=Hmisc
 #'
 #' @export
-hoeffding.D.test <- function(xs, ys, na.rm = T, collisions = T, precision = 1e-5)
+hoeffding.D.test <- function(xs, ys, na.rm = TRUE, collisions = TRUE, precision = 1e-5)
 {
-  return(.generic.rank.test(xs, ys, calc_hoeffding, "D",
+  return(.generic.rank.test(xs, ys, .calc.hoeffding, "D",
                             "Hoeffding's D Independence Test",
                             na.rm = na.rm,
                             collisions = collisions,
@@ -384,9 +384,9 @@ hoeffding.D.test <- function(xs, ys, na.rm = T, collisions = T, precision = 1e-5
 #' arXiv preprint arXiv:1911.01414 (2019).
 #'
 #' @export
-hoeffding.refined.test <- function(xs, ys, na.rm = T, collisions = T, precision = 1e-5)
+hoeffding.refined.test <- function(xs, ys, na.rm = TRUE, collisions = TRUE, precision = 1e-5)
 {
-  return(.generic.rank.test(xs, ys, calc_refined, "R",
+  return(.generic.rank.test(xs, ys, .calc.refined, "R",
                             "Refined Hoeffding Independence Test",
                             na.rm = na.rm,
                             collisions = collisions,

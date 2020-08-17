@@ -16,7 +16,7 @@ of Hoeffding's D statistic or its refinement. This may depend on the
 availability of 64-bit or 128-bit words to the compiler in use.
 }
 \examples{
-independence:::max_hoeffding()
+max_hoeffding()
 }
 \seealso{
 \code{\link{hoeffding.D.test}}

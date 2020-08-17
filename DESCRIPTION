@@ -7,18 +7,18 @@ Authors@R: person("Chaim", "Even-Zohar", email = "chaim@ucdavis.edu", role = c("
 Maintainer: Chaim Even-Zohar <chaim@ucdavis.edu>
 Description: Performs three ranking-based nonparametric tests for the
                 independence of two continuous variables:
-                (1) the classical Hoeffding's D test; 
+                (1) the classical Hoeffding's D test;
                 (2) a refined variant of it, named R;
                 (3) the Bergsma-Dassios T* sign covariance.
-                The first test is consistent assuming an 
-                absolutely continuous bivariate distribution, 
-                i.e., the population coefficient D=0 
+                The first test is consistent assuming an
+                absolutely continuous bivariate distribution,
+                i.e., the population coefficient D=0
                 iff the variables are independent.
-                The latter two are consistent 
+                The latter two are consistent
                 under no restriction on the distribution.
-                All three statistics are computed 
+                All three statistics are computed
                 in time O(n log n) given n iid paired samples.
-                The computation of R and T* uses a new algorithm, 
+                The computation of R and T* uses a new algorithm,
                 following work of Even-Zohar and Leng (2019),
                 see <arXiv:1911.01414> and references therein.
 License: GPL (>= 3)
@@ -28,5 +28,5 @@ Suggests: TauStar, testthat
 Encoding: UTF-8
 RoxygenNote: 7.1.1
 NeedsCompilation: yes
-Packaged: 2020-08-10 19:46:04 UTC; cevenzohar
+Packaged: 2020-08-17 19:53:57 UTC; cevenzohar
 Author: Chaim Even-Zohar [aut, cre]

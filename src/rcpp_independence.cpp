@@ -61,14 +61,15 @@ typedef unsigned long entry;
 //' @seealso
 //' \code{\link{tau.star.test}}
 //'
+//' @export max_taustar
+//'
 //' @examples
-//' independence:::max_taustar()
-// [[Rcpp::export]]
+//' max_taustar()
+// [[Rcpp::export(name = "max_taustar")]]
 double max_taustar()
 #ifdef __SIZEOF_INT128__
 { return MAX_TAUSTAR_128; }
 #else
-
 { return MAX_TAUSTAR_64; }
 #endif
 
@@ -86,9 +87,11 @@ double max_taustar()
 //' \code{\link{hoeffding.D.test}}
 //' \code{\link{hoeffding.refined.test}}
 //'
+//' @export max_hoeffding
+//'
 //' @examples
-//' independence:::max_hoeffding()
-// [[Rcpp::export]]
+//' max_hoeffding()
+// [[Rcpp::export(name = "max_hoeffding")]]
 double max_hoeffding()
 #ifdef __SIZEOF_INT128__
 { return MAX_HOEFFDING_128; }
@@ -205,19 +208,23 @@ element taustar_count(const std::vector<entry>& perm)
 //'
 //'     The return value -1.0 indicates an error.
 //'
+//' @aliases calc.taustar
+//'
+//' @export
+//'
 //' @examples
 //'
-//' independence:::calc_taustar(0:3)
+//' .calc.taustar(0:3)
 //' ## [1] 0.6666667
 //'
-//' independence:::calc_taustar(c(0,2,1,3))
+//' .calc.taustar(c(0,2,1,3))
 //' ## [1] -0.3333333
 //'
 //' set.seed(397)
-//' independence:::calc_taustar(order(runif(1000))-1)
+//' .calc.taustar(order(runif(1000))-1)
 //' ## [1] 0.004392385
 //'
-// [[Rcpp::export]]
+// [[Rcpp::export(name = ".calc.taustar")]]
 double calc_taustar(const std::vector<unsigned long>& perm)
 {
   entry n = perm.size();
@@ -283,18 +290,20 @@ element hoeffding_count(const std::vector<entry>& perm)
 //'
 //'     The return value -1.0 indicates an error.
 //'
+//' @export
+//'
 //' @examples
 //'
-//' independence:::calc_hoeffding(0:4)
+//' .calc.hoeffding(0:4)
 //' ## [1] 0.03333333
 //'
-//' independence:::calc_hoeffding(c(0,3,2,1,4))
+//' .calc.hoeffding(c(0,3,2,1,4))
 //' ## [1] -0.01666667
 //'
 //' set.seed(397)
-//' independence:::calc_hoeffding(order(runif(1000))-1) * 36
+//' .calc.hoeffding(order(runif(1000))-1) * 36
 //' ## [1] 0.004349087
-// [[Rcpp::export]]
+// [[Rcpp::export(name = ".calc.hoeffding")]]
 double calc_hoeffding(const std::vector<unsigned long>& perm)
 {
   entry n = perm.size();
@@ -337,18 +346,20 @@ double calc_hoeffding(const std::vector<unsigned long>& perm)
 //'
 //'     The return value -1.0 indicates an error.
 //'
+//' @export
+//'
 //' @examples
 //'
-//' independence:::calc_refined(0:4)
+//' .calc.refined(0:4)
 //' ## [1] 0.01111111
 //'
-//' independence:::calc_refined(c(0,3,2,1,4))
+//' .calc.refined(c(0,3,2,1,4))
 //' ## [1] -0.005555556
 //'
 //' set.seed(397)
-//' independence:::calc_refined(order(runif(1000))-1) * 36
+//' .calc.refined(order(runif(1000))-1) * 36
 //' ## [1] 0.004414034
-// [[Rcpp::export]]
+// [[Rcpp::export(name = ".calc.refined")]]
 double calc_refined(const std::vector<unsigned long>& perm)
 {
     double D = calc_hoeffding(perm);

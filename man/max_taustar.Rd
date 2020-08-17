@@ -16,7 +16,7 @@ of Tau*. This may depend on the availability of 64-bit or 128-bit words
 to the compiler in use.
 }
 \examples{
-independence:::max_taustar()
+max_taustar()
 }
 \seealso{
 \code{\link{tau.star.test}}

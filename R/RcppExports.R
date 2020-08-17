@@ -14,8 +14,10 @@
 #' @seealso
 #' \code{\link{tau.star.test}}
 #'
+#' @export max_taustar
+#'
 #' @examples
-#' independence:::max_taustar()
+#' max_taustar()
 max_taustar <- function() {
     .Call(`_independence_max_taustar`)
 }
@@ -34,8 +36,10 @@ max_taustar <- function() {
 #' \code{\link{hoeffding.D.test}}
 #' \code{\link{hoeffding.refined.test}}
 #'
+#' @export max_hoeffding
+#'
 #' @examples
-#' independence:::max_hoeffding()
+#' max_hoeffding()
 max_hoeffding <- function() {
     .Call(`_independence_max_hoeffding`)
 }
@@ -61,19 +65,23 @@ max_hoeffding <- function() {
 #'
 #'     The return value -1.0 indicates an error.
 #'
+#' @aliases calc.taustar
+#'
+#' @export
+#'
 #' @examples
 #'
-#' independence:::calc_taustar(0:3)
+#' .calc.taustar(0:3)
 #' ## [1] 0.6666667
 #'
-#' independence:::calc_taustar(c(0,2,1,3))
+#' .calc.taustar(c(0,2,1,3))
 #' ## [1] -0.3333333
 #'
 #' set.seed(397)
-#' independence:::calc_taustar(order(runif(1000))-1)
+#' .calc.taustar(order(runif(1000))-1)
 #' ## [1] 0.004392385
 #'
-calc_taustar <- function(perm) {
+.calc.taustar <- function(perm) {
     .Call(`_independence_calc_taustar`, perm)
 }
 
@@ -98,18 +106,20 @@ calc_taustar <- function(perm) {
 #'
 #'     The return value -1.0 indicates an error.
 #'
+#' @export
+#'
 #' @examples
 #'
-#' independence:::calc_hoeffding(0:4)
+#' .calc.hoeffding(0:4)
 #' ## [1] 0.03333333
 #'
-#' independence:::calc_hoeffding(c(0,3,2,1,4))
+#' .calc.hoeffding(c(0,3,2,1,4))
 #' ## [1] -0.01666667
 #'
 #' set.seed(397)
-#' independence:::calc_hoeffding(order(runif(1000))-1) * 36
+#' .calc.hoeffding(order(runif(1000))-1) * 36
 #' ## [1] 0.004349087
-calc_hoeffding <- function(perm) {
+.calc.hoeffding <- function(perm) {
     .Call(`_independence_calc_hoeffding`, perm)
 }
 
@@ -134,18 +144,20 @@ calc_hoeffding <- function(perm) {
 #'
 #'     The return value -1.0 indicates an error.
 #'
+#' @export
+#'
 #' @examples
 #'
-#' independence:::calc_refined(0:4)
+#' .calc.refined(0:4)
 #' ## [1] 0.01111111
 #'
-#' independence:::calc_refined(c(0,3,2,1,4))
+#' .calc.refined(c(0,3,2,1,4))
 #' ## [1] -0.005555556
 #'
 #' set.seed(397)
-#' independence:::calc_refined(order(runif(1000))-1) * 36
+#' .calc.refined(order(runif(1000))-1) * 36
 #' ## [1] 0.004414034
-calc_refined <- function(perm) {
+.calc.refined <- function(perm) {
     .Call(`_independence_calc_refined`, perm)
 }
 

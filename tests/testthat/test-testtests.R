@@ -32,13 +32,13 @@ test_that("relative.order works",
 
     # na.rm
     expect_error(relative.order(c(1,2,3,NA,NA,NA),c(NA,NA,NA,1,2,3)))
-    expect_silent(relative.order(c(1,2,3,NA,NA,NA),c(NA,NA,NA,1,2,3),F,F))
-    expect_length(relative.order(c(1,2,3,NA,NaN,Inf,-Inf),c(1,NA,3,4,5,6,7),T),2)
-    expect_length(relative.order(c(1,2,3,NA,NaN,Inf,-Inf),c(1,NA,3,4,5,6,7),F),7)
+    expect_silent(relative.order(c(1,2,3,NA,NA,NA),c(NA,NA,NA,1,2,3),FALSE,FALSE))
+    expect_length(relative.order(c(1,2,3,NA,NaN,Inf,-Inf),c(1,NA,3,4,5,6,7),TRUE),2)
+    expect_length(relative.order(c(1,2,3,NA,NaN,Inf,-Inf),c(1,NA,3,4,5,6,7),FALSE),7)
 
     # collisions
-    expect_warning(relative.order(c(1,1,1),c(2,2,3),T,T))
-    expect_silent(relative.order(c(1,1,1),c(2,2,3),T,F))
+    expect_warning(relative.order(c(1,1,1),c(2,2,3),TRUE,TRUE))
+    expect_silent(relative.order(c(1,1,1),c(2,2,3),TRUE,FALSE))
     expect_warning(relative.order(as.integer(runif(10,0,9)),1:10))
 
     # function's function
@@ -59,48 +59,48 @@ test_that("relative.order works",
 test_that("rcpp functions work",
 {
     # return types
-    expect_is(independence:::max_hoeffding(), "numeric")
-    expect_is(independence:::max_taustar(), "numeric")
-    expect_is(independence:::calc_taustar(0:9), "numeric")
-    expect_is(independence:::calc_hoeffding(0:9), "numeric")
-    expect_is(independence:::calc_refined(0:9), "numeric")
-    expect_type(independence:::calc_taustar(0:9), "double")
-    expect_type(independence:::calc_hoeffding(0:9), "double")
-    expect_type(independence:::calc_refined(0:9), "double")
+    expect_is(max_hoeffding(), "numeric")
+    expect_is(max_taustar(), "numeric")
+    expect_is(.calc.taustar(0:9), "numeric")
+    expect_is(.calc.hoeffding(0:9), "numeric")
+    expect_is(.calc.refined(0:9), "numeric")
+    expect_type(.calc.taustar(0:9), "double")
+    expect_type(.calc.hoeffding(0:9), "double")
+    expect_type(.calc.refined(0:9), "double")
 
     # selected values
-    expect_equal(independence:::calc_taustar(c(2,1,0)),-1)
-    expect_equal(independence:::calc_taustar(c(0,1,2,3)),2/3)
-    expect_equal(independence:::calc_taustar(c(1,0,2,3)),2/3)
-    expect_equal(independence:::calc_taustar(c(1,3,2,0)),-1/3)
-    expect_equal(independence:::calc_taustar(c(1,2,0,3)),-1/3)
-    expect_equal(independence:::calc_taustar(c(0,2,4,1,3,5)),0)
-    expect_equal(independence:::calc_taustar(c(9,6,8,0,4,2,7,3,1,5)),1/42)
-    expect_equal(independence:::calc_taustar(0:99),2/3)
-    expect_equal(independence:::calc_taustar((0:100*24)%%101),-10/1111)
-    expect_equal(independence:::calc_hoeffding(c(3,2,1,0)),-1)
-    expect_equal(independence:::calc_hoeffding(c(0,1,2,4,3)),1/30)
-    expect_equal(independence:::calc_hoeffding(c(1,4,2,3,0)),-1/60)
-    expect_equal(independence:::calc_hoeffding(c(1,2,3,4,0)),0)
-    expect_equal(independence:::calc_hoeffding(c(1,2,0,3,4)),0)
-    expect_equal(independence:::calc_hoeffding(c(0,5,2,3,1,4)),-1/90)
-    expect_equal(independence:::calc_hoeffding(c(9,6,8,0,4,2,7,3,1,5)),-1/945)
-    expect_equal(independence:::calc_hoeffding(0:99),1/30)
-    expect_equal(independence:::calc_refined(c(3,2,1,0)),-1)
-    expect_equal(independence:::calc_refined(c(0,1,2,4,3)),1/90)
-    expect_equal(independence:::calc_refined(c(1,2,0,3,4)),1/90)
-    expect_equal(independence:::calc_refined(c(1,4,2,3,0)),-1/180)
-    expect_equal(independence:::calc_refined(c(1,2,3,4,0)),-1/180)
-    expect_equal(independence:::calc_refined(c(1,3,0,5,4,2)),0)
-    expect_equal(independence:::calc_refined(c(9,6,8,0,4,2,7,3,1,5)),23/15120)
-    expect_equal(independence:::calc_refined(0:99),1/90)
+    expect_equal(.calc.taustar(c(2,1,0)),-1)
+    expect_equal(.calc.taustar(c(0,1,2,3)),2/3)
+    expect_equal(.calc.taustar(c(1,0,2,3)),2/3)
+    expect_equal(.calc.taustar(c(1,3,2,0)),-1/3)
+    expect_equal(.calc.taustar(c(1,2,0,3)),-1/3)
+    expect_equal(.calc.taustar(c(0,2,4,1,3,5)),0)
+    expect_equal(.calc.taustar(c(9,6,8,0,4,2,7,3,1,5)),1/42)
+    expect_equal(.calc.taustar(0:99),2/3)
+    expect_equal(.calc.taustar((0:100*24)%%101),-10/1111)
+    expect_equal(.calc.hoeffding(c(3,2,1,0)),-1)
+    expect_equal(.calc.hoeffding(c(0,1,2,4,3)),1/30)
+    expect_equal(.calc.hoeffding(c(1,4,2,3,0)),-1/60)
+    expect_equal(.calc.hoeffding(c(1,2,3,4,0)),0)
+    expect_equal(.calc.hoeffding(c(1,2,0,3,4)),0)
+    expect_equal(.calc.hoeffding(c(0,5,2,3,1,4)),-1/90)
+    expect_equal(.calc.hoeffding(c(9,6,8,0,4,2,7,3,1,5)),-1/945)
+    expect_equal(.calc.hoeffding(0:99),1/30)
+    expect_equal(.calc.refined(c(3,2,1,0)),-1)
+    expect_equal(.calc.refined(c(0,1,2,4,3)),1/90)
+    expect_equal(.calc.refined(c(1,2,0,3,4)),1/90)
+    expect_equal(.calc.refined(c(1,4,2,3,0)),-1/180)
+    expect_equal(.calc.refined(c(1,2,3,4,0)),-1/180)
+    expect_equal(.calc.refined(c(1,3,0,5,4,2)),0)
+    expect_equal(.calc.refined(c(9,6,8,0,4,2,7,3,1,5)),23/15120)
+    expect_equal(.calc.refined(0:99),1/90)
 
     # random values
     set.seed(1)
     x <- order(rnorm(12345))-1
-    Tn <- independence:::calc_taustar(x)
-    Dn <- independence:::calc_hoeffding(x)
-    Rn <- independence:::calc_refined(x)
+    Tn <- .calc.taustar(x)
+    Dn <- .calc.hoeffding(x)
+    Rn <- .calc.refined(x)
     expect_equal(Tn, -0.0000081824294564, tolerance = 1e-10, scale = abs(Tn))
     expect_equal(Dn, -0.0000002278996886, tolerance = 1e-10, scale = abs(Dn))
     expect_equal(Rn, -0.0000002269847163, tolerance = 1e-10, scale = abs(Rn))
@@ -123,9 +123,9 @@ test_that("independence tests test",
         expect_silent(test(1:6,1:6))
         if (requireNamespace("TauStar"))
         {
-            expect_equal(is.na(test(1:6,1:6,precision = 0.0)$p.value), T)
-            expect_equal(is.na(test(1:6,1:6,precision = 0.1)$p.value), F)
-            expect_equal(is.na(test(1:6,1:6,precision = 1.0)$p.value), T)
+            expect_equal(is.na(test(1:6,1:6,precision = 0.0)$p.value), TRUE)
+            expect_equal(is.na(test(1:6,1:6,precision = 0.1)$p.value), FALSE)
+            expect_equal(is.na(test(1:6,1:6,precision = 1.0)$p.value), TRUE)
         }
     }
 
@@ -143,7 +143,7 @@ test_that("independence tests test",
         if (requireNamespace("TauStar"))
         {
             expect_equal(it$p.value,
-                         TauStar::pHoeffInd(it$scaled, lower.tail = F)[1])
+                         TauStar::pHoeffInd(it$scaled, lower.tail = FALSE)[1])
             expect_gt(it$p.value, 0.001)
         }
     }
@@ -165,7 +165,7 @@ test_that("independence tests test",
         if (requireNamespace("TauStar"))
         {
             expect_equal(it$p.value,
-                         TauStar::pHoeffInd(it$scaled, lower.tail = F)[1])
+                         TauStar::pHoeffInd(it$scaled, lower.tail = FALSE)[1])
             expect_lt(it$p.value, 0.001)
         }
     }
