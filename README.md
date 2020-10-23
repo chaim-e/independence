@@ -11,10 +11,22 @@ All three statistics are computed in time O(n log n) given n iid paired samples.
 ```
 library(devtools)
 install_github("chaim-e/independence")
+library(independence)
 ```
 ## Examples
 ```
 tau.star.test(rnorm(1000),rnorm(1000))
 hoeffding.D.test(rnorm(1000),rnorm(1000))
 hoeffding.refined.test(rnorm(1000),rnorm(1000))
+
+set.seed(12345)
+f <- function(a,b) ifelse(a>b, pmin(b,a/2), pmax(b,(a+1)/2))
+x <- runif(300)
+y <- f(x, runif(300))
+hoeffding.D.test(x,y)$p.value
+# [1] 0.4589397
+hoeffding.refined.test(x,y)$p.value
+# [1] 2.138784e-10
+tau.star.test(x,y)$p.value
+# [1] 1.053099e-08
 ```
