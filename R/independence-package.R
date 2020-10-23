@@ -41,7 +41,7 @@
 #' following work of Even-Zohar and Leng.
 #' It is based on the fast counting of certain patterns
 #' in the permutation that relates the ranks of X and Y.
-#' See [arxiv:1911.01414] and references therein.
+#' See [arxiv:2010.09712] and references therein.
 #'
 #' @seealso
 #' \code{\link{tau.star.test}},

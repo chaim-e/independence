@@ -122,6 +122,9 @@ https://CRAN.R-project.org/package=TauStar
 Frank E Harrell Jr, with contributions from Charles Dupont and many
 others. (2020). Hmisc: Harrell Miscellaneous. R package version
 4.4-0. https://CRAN.R-project.org/package=Hmisc
+\cr\cr
+Even-Zohar, Chaim. "independence: Fast Rank Tests."
+arXiv preprint arXiv:2010.09712 (2020).
 }
 \seealso{
 \code{\link{independence}},

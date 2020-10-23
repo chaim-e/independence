@@ -132,6 +132,9 @@ arXiv preprint arXiv:1811.07883 (2018).
 \cr\cr
 Even-Zohar, Chaim, and Calvin Leng. "Counting Small Permutation Patterns."
 arXiv preprint arXiv:1911.01414 (2019).
+\cr\cr
+Even-Zohar, Chaim. "independence: Fast Rank Tests."
+arXiv preprint arXiv:2010.09712 (2020).
 }
 \seealso{
 \code{\link{independence}},
