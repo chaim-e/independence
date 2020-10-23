@@ -31,7 +31,7 @@
 #' \code{\link{tau.star.test}}
 #' }
 #' The first test is consistent assuming an absolutely continuous joint distribution,
-#' i.e., the populaion coefficient D=0 iff the variables are independent.
+#' i.e., the population coefficient D=0 iff the variables are independent.
 #' The latter two are consistent under no restriction on the distribution.
 #'
 #' Given an iid sample (X1,Y1),...,(Xn,Yn),

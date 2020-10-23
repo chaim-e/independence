@@ -28,5 +28,5 @@ Suggests: TauStar, testthat
 Encoding: UTF-8
 RoxygenNote: 7.1.1
 NeedsCompilation: yes
-Packaged: 2020-10-23 10:59:54 UTC; cevenzohar
+Packaged: 2020-10-23 11:53:52 UTC; cevenzohar
 Author: Chaim Even-Zohar [aut, cre]
