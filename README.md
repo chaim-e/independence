@@ -15,10 +15,12 @@ library(independence)
 ```
 ## Examples
 ```
-tau.star.test(rnorm(1000),rnorm(1000))
-hoeffding.D.test(rnorm(1000),rnorm(1000))
-hoeffding.refined.test(rnorm(1000),rnorm(1000))
+tau.star.test(rnorm(1000000),rnorm(1000000))
+hoeffding.D.test(rnorm(1000000),rnorm(1000000))
+hoeffding.refined.test(rnorm(1000000),rnorm(1000000))
+```
 
+```
 set.seed(12345)
 f <- function(a,b) ifelse(a>b, pmin(b,a/2), pmax(b,(a+1)/2))
 x <- runif(300)
@@ -29,4 +31,17 @@ hoeffding.refined.test(x,y)$p.value
 # [1] 2.138784e-10
 tau.star.test(x,y)$p.value
 # [1] 1.053099e-08
+```
+
+```
+set.seed(13579)
+f <- function(a,b) ifelse(a>0.5, pmin(b,1-0.5/a), pmax(b,0.5/(1-a)))
+x <- runif(50)
+y <- f(x, runif(50))
+hoeffding.D.test(x,y)$p.value
+# [1] 0.4157275
+hoeffding.refined.test(x,y)$p.value
+# [1] 8.04458e-08
+tau.star.test(x,y)$p.value
+# [1] 1.009128e-05
 ```
