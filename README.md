@@ -19,7 +19,7 @@ tau.star.test(rnorm(1000000),rnorm(1000000))
 hoeffding.D.test(rnorm(1000000),rnorm(1000000))
 hoeffding.refined.test(rnorm(1000000),rnorm(1000000))
 ```
-
+### Why you should use the refined Hoeffding's D or tau*
 ```
 set.seed(12345)
 f <- function(a,b) ifelse(a>b, pmin(b,a/2), pmax(b,(a+1)/2))
@@ -44,4 +44,17 @@ hoeffding.refined.test(x,y)$p.value
 # [1] 8.04458e-08
 tau.star.test(x,y)$p.value
 # [1] 1.009128e-05
+```
+
+```
+set.seed(54321)
+f <- function(a,b) (a+b-b%%(2^ceiling(log(pmin(a,1-a),2))))%%1
+x <- runif(1000)
+y <- f(x, runif(1000))
+hoeffding.D.test(x,y)$p.value
+# [1] 0.5391983
+hoeffding.refined.test(x,y)$p.value
+# [1] 6.539453e-09
+tau.star.test(x,y)$p.value
+# [1] 8.865218e-07
 ```
